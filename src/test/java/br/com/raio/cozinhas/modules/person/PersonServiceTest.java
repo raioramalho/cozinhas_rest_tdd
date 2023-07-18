@@ -21,7 +21,7 @@ class PersonServiceTest {
     @Test
     void findAll() {
         List<Person> personList = this.personService.findAll();
-        assertEquals(1, personList.size());
+        assertEquals(2, personList.size());
     }
 
     @Test
@@ -32,7 +32,7 @@ class PersonServiceTest {
 
     @Test
     void findByEmail() {
-        Optional<Person> person = this.personService.findByEmail("ramalho.sit@gmail.com");
+        Optional<Person> person = this.personService.findByEmail("alan@gmail.com");
         assertEquals("Ramalho", person.get().getLastName());
     }
 }

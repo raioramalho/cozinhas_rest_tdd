@@ -20,10 +20,21 @@ public class PersonService {
     this.repositorie = repositorie;
   }
 
-  public Person addNew(Person person) {
+  public Person save(Person person) {
     try {
-      Person newPerson = (Person) this.repositorie.save(person);
-      return newPerson;
+      List<Person> all = this.repositorie.findAll();
+
+
+      Optional<Person> findPerson = all.stream().filter(index -> index.getEmail().equals(person.getEmail())).findFirst();
+
+      if(!findPerson.isEmpty()) {
+        throw new ErrorHandler("Person is alredy registered.", HttpStatus.CONFLICT);
+      }
+
+      Person savePerson = (Person) this.repositorie.save(person);
+
+      return savePerson;
+
     } catch (Exception e) {
       throw new Error(e.getMessage());
     }

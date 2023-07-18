@@ -1,13 +1,1 @@
-POST http://localhost:8080/person
-Content-Type: application/json
-
-{
-  "name": "Alan",
-  "lastName": "Ramalho",
-  "email": "alan@gmail.com",
-}
-
-
-###
 GET http://localhost:8080/person
-Content-Type: application/json

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("person")
+@RequestMapping("/person")
 public class PersonController {
 
     private PersonRepositorie repositorie;
@@ -16,12 +16,13 @@ public class PersonController {
     @Autowired
     private PersonService personService = new PersonService(repositorie);
 
-    @PostMapping()
-    public Person createNewPerson(@RequestBody Person body) {
-        Person person = this.personService.addNew(body);
-        return person;
+    @PostMapping("")
+    public Person save(@RequestBody Person person) {
+        Person newPerson = this.personService.save(person);
+        return newPerson;
     }
-    @GetMapping()
+
+    @GetMapping("")
     public List<Person> getAll() {
         List<Person> persons = this.personService.findAll();
         return persons;
