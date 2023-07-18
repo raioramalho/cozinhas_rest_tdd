@@ -20,6 +20,15 @@ public class PersonService {
     this.repositorie = repositorie;
   }
 
+  public Person addNew(Person person) {
+    try {
+      Person newPerson = (Person) this.repositorie.save(person);
+      return newPerson;
+    } catch (Exception e) {
+      throw new Error(e.getMessage());
+    }
+  }
+
   public List<Person> findAll() {
     try {
       List<Person> all = this.repositorie.findAll();
